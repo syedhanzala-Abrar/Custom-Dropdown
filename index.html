@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stories Component | Interactive Wireframe Implementation</title>
+  
+  <!-- Inter & Plus Jakarta Sans Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Stories Feature</h1>
+          <p>Interactive implementation based on specification wireframe</p>
+        </div>
+      </div>
+
+      <!-- State Preset Controller (Wireframe States 1, 2, 3) -->
+      <div class="state-controls-panel" role="toolbar" aria-label="Story State Switcher">
+        <span class="control-label">Wireframe States:</span>
+        <div class="btn-group">
+          <button type="button" class="state-btn" data-state="empty" id="btn-state-empty">
+            <span class="dot"></span>
+            0 Stories (Empty)
+          </button>
+          <button type="button" class="state-btn" data-state="single" id="btn-state-single">
+            <span class="dot"></span>
+            1 Story
+          </button>
+          <button type="button" class="state-btn active" data-state="multiple" id="btn-state-multiple">
+            <span class="dot"></span>
+            Multiple Stories
+          </button>
+        </div>
+        <button type="button" class="action-btn" id="btn-open-create">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="10" y1="4" x2="10" y2="16"></line>
+            <line x1="4" y1="10" x2="16" y2="10"></line>
+          </svg>
+          Add Story
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Phone Mockup / Feed Card -->
+      <section class="device-card">
+        
+        <!-- App Top Bar in Phone -->
+        <div class="device-topbar">
+          <div class="device-logo">Stories</div>
+          <div class="device-actions">
+            <span class="device-badge" id="active-state-indicator">Multiple Stories</span>
+          </div>
+        </div>
+
+        <!-- Stories Tray Container (The Wireframe Box) -->
+        <div class="stories-tray-container" id="stories-tray-container" aria-label="Stories Bar">
+          <div class="stories-scroll-wrapper" id="stories-tray">
+            
+            <!-- Add Story Button (+) (Always present on left per wireframe) -->
+            <button
+              type="button"
+              class="story-item create-story-btn"
+              id="create-story-trigger"
+              aria-label="Add a new story"
+              title="Add story"
+            >
+              <div class="story-circle add-circle">
+                <svg class="plus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+              <span class="story-label">Your story</span>
+            </button>
+
+            <!-- Dynamic Story Circles will be rendered here by script.js -->
+            <div class="stories-list" id="stories-list" role="list"></div>
+
+          </div>
+        </div>
+
+        <!-- Feed Placeholder / Interactive Hint -->
+        <div class="feed-body">
+          <div class="feed-empty-hint">
+            <div class="wireframe-diagram-preview">
+              <svg viewBox="0 0 120 70" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Sun & Mountains doodle matching the user's wireframe screenshot -->
+                <rect x="2" y="2" width="116" height="66" rx="6"></rect>
+                <circle cx="60" cy="25" r="10"></circle>
+                <polyline points="10 58 40 32 70 58"></polyline>
+                <polyline points="55 58 85 38 110 58"></polyline>
+                <line x1="4" y1="8" x2="116" y2="8" stroke-dasharray="2 3"></line>
+              </svg>
+            </div>
+            <h3 class="feed-title">Click any story bubble above</h3>
+            <p class="feed-desc">
+              Stories play for <strong>3 seconds</strong> each with a segmented progress bar.
+              Tap sides or <strong>swipe</strong> to switch stories.
+            </p>
+            <div class="feature-tags">
+              <span class="tag">⏱ 3s Progress Bar</span>
+              <span class="tag">👆 Swipe Support</span>
+              <span class="tag">⏸ Hold to Pause</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Wireframe Specifications Cards Showcase (Visual Demonstration) -->
+      <section class="wireframe-specs-card">
+        <h2 class="specs-title">Wireframe Requirement Compliance</h2>
+        
+        <div class="specs-grid">
+          <!-- Spec 1: No Stories -->
+          <div class="spec-card">
+            <div class="spec-header">
+              <span class="spec-num">State 1</span>
+              <h4>When there are no stories</h4>
+            </div>
+            <div class="spec-box-preview">
+              <div class="mini-tray">
+                <div class="mini-plus">+</div>
+              </div>
+            </div>
+            <p class="spec-text">Only the <code>+</code> button is visible in the container.</p>
+          </div>
+
+          <!-- Spec 2: One Story -->
+          <div class="spec-card">
+            <div class="spec-header">
+              <span class="spec-num">State 2</span>
+              <h4>When there is one story</h4>
+            </div>
+            <div class="spec-box-preview">
+              <div class="mini-tray">
+                <div class="mini-plus">+</div>
+                <div class="mini-circle"></div>
+              </div>
+            </div>
+            <p class="spec-text">The <code>+</code> button plus a single story circle.</p>
+          </div>
+
+          <!-- Spec 3: Multiple Stories -->
+          <div class="spec-card">
+            <div class="spec-header">
+              <span class="spec-num">State 3</span>
+              <h4>When there are multiple stories</h4>
+            </div>
+            <div class="spec-box-preview">
+              <div class="mini-tray">
+                <div class="mini-plus">+</div>
+                <div class="mini-circle"></div>
+                <div class="mini-circle"></div>
+                <div class="mini-circle"></div>
+                <div class="mini-circle"></div>
+                <div class="mini-circle"></div>
+              </div>
+            </div>
+            <p class="spec-text">All story circles line up horizontally with tap & swipe support.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============================================================== -->
+    <!-- FULLSCREEN / CARD STORY VIEWER MODAL                           -->
+    <!-- ============================================================== -->
+    <div
+      class="story-viewer-modal"
+      id="story-viewer"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      hidden
+    >
+      <div class="story-viewer-backdrop" id="viewer-backdrop"></div>
+
+      <!-- Main Story Player Container -->
+      <div class="story-player" id="story-player" tabindex="0">
+        
+        <!-- Top Segmented Progress Bar (Each story has a separate progress bar) -->
+        <div class="story-progress-container" id="story-progress-container" aria-label="Story Progress">
+          <!-- Progress bar segments injected dynamically by script.js -->
+        </div>
+
+        <!-- Story Header: Author Info & Controls -->
+        <div class="story-header">
+          <div class="author-info">
+            <img class="author-avatar" id="viewer-author-avatar" src="" alt="Author Avatar" />
+            <div class="author-meta">
+              <span class="author-name" id="viewer-author-name">Username</span>
+              <span class="author-time" id="viewer-author-time">2h ago</span>
+            </div>
+          </div>
+
+          <div class="viewer-controls">
+            <!-- Paused Indicator Badge -->
+            <span class="pause-badge" id="viewer-pause-badge" hidden>PAUSED</span>
+
+            <!-- Close Viewer Button -->
+            <button type="button" class="viewer-btn close-btn" id="viewer-close-btn" aria-label="Close story viewer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Story Media Container (Landscape, Mountain, Sun or Custom Photos) -->
+        <div class="story-media-wrapper" id="story-media-wrapper">
+          <img class="story-media-img" id="viewer-media-img" src="" alt="Story media content" />
+          
+          <!-- Optional Mountain/Sun SVG fallback if offline -->
+          <div class="story-media-fallback" id="viewer-media-fallback" hidden>
+            <svg viewBox="0 0 400 600" class="mountain-sun-svg">
+              <defs>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1E293B" />
+                  <stop offset="100%" stop-color="#0F172A" />
+                </linearGradient>
+                <linearGradient id="sunGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FDE047" />
+                  <stop offset="100%" stop-color="#F59E0B" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="600" fill="url(#skyGrad)" />
+              <circle cx="200" cy="220" r="45" fill="url(#sunGrad)" />
+              <polygon points="40,550 170,340 300,550" fill="#334155" />
+              <polygon points="180,550 280,390 380,550" fill="#1E293B" stroke="#475569" stroke-width="2" />
+            </svg>
+          </div>
+
+          <!-- Story Caption & Tagline -->
+          <div class="story-caption-overlay" id="viewer-caption-box">
+            <p class="story-caption" id="viewer-caption-text">Story caption goes here...</p>
+          </div>
+        </div>
+
+        <!-- Tap Navigation Zones (Left: Previous, Right: Next) -->
+        <div class="tap-zone tap-left" id="tap-prev" aria-label="Previous story"></div>
+        <div class="tap-zone tap-right" id="tap-next" aria-label="Next story"></div>
+
+        <!-- Arrow Buttons for Desktop Viewers -->
+        <button type="button" class="nav-arrow nav-prev" id="nav-prev-btn" aria-label="Previous Story">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button type="button" class="nav-arrow nav-next" id="nav-next-btn" aria-label="Next Story">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Bottom Gesture / Swipe Instruction Hint -->
+        <div class="viewer-footer-hint">
+          <span>Tap sides or swipe left/right • Hold to pause</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- ADD STORY MODAL DIALOG                                         -->
+    <!-- ============================================================== -->
+    <div class="modal-dialog-overlay" id="create-modal-overlay" hidden>
+      <div class="modal-card" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-header">
+          <h3 id="modal-title">Create New Story</h3>
+          <button type="button" class="modal-close-btn" id="close-modal-btn" aria-label="Close modal">×</button>
+        </div>
+        
+        <form id="create-story-form" class="modal-form">
+          <div class="form-group">
+            <label for="story-author-input">Your Name / Username</label>
+            <input type="text" id="story-author-input" placeholder="e.g. alex.wanderer" required maxlength="25" />
+          </div>
+
+          <div class="form-group">
+            <label for="story-caption-input">Story Caption</label>
+            <input type="text" id="story-caption-input" placeholder="e.g. Sunset in the mountains 🏔️" maxlength="80" />
+          </div>
+
+          <div class="form-group">
+            <label>Choose a Theme</label>
+            <div class="theme-picker" id="theme-picker">
+              <button type="button" class="theme-option selected" data-theme="mountains">
+                <span>🏔️ Mountains</span>
+              </button>
+              <button type="button" class="theme-option" data-theme="ocean">
+                <span>🌊 Ocean</span>
+              </button>
+              <button type="button" class="theme-option" data-theme="aurora">
+                <span>🌌 Aurora</span>
+              </button>
+              <button type="button" class="theme-option" data-theme="desert">
+                <span>🏜️ Desert</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary" id="cancel-create-btn">Cancel</button>
+            <button type="submit" class="btn-primary">Post Story</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

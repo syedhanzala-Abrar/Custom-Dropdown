@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Dropdown Component | SaaS UI</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-background"></div>
+
+  <main class="app-container">
+    <!-- Card Container -->
+    <div class="dropdown-card" role="region" aria-label="Specialization Selector Card">
+      
+      <!-- Card Header -->
+      <header class="card-header">
+        <div class="badge">
+          <svg class="badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 2 7 12 12 12 2"></polygon>
+            <path d="M2 17h12"></path>
+          </svg>
+          <span>UI Component</span>
+        </div>
+        <h1 class="card-title">Custom Dropdown</h1>
+        <p class="card-subtitle">Choose your preferred development specialization</p>
+      </header>
+
+      <!-- Dropdown Form Section -->
+      <section class="dropdown-wrapper">
+        <label id="specialization-label" class="field-label" for="specialization-trigger">
+          Development Specialization
+        </label>
+
+        <!-- Custom Dropdown Component -->
+        <div class="custom-dropdown" id="specialization-dropdown" data-dropdown>
+          
+          <!-- Hidden Native Input for Form Integration -->
+          <input
+            type="hidden"
+            name="specialization"
+            id="specialization-input"
+            value=""
+          />
+
+          <!-- Dropdown Trigger Button -->
+          <button
+            type="button"
+            id="specialization-trigger"
+            class="dropdown-trigger"
+            role="combobox"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="specialization-options"
+            aria-labelledby="specialization-label specialization-text"
+          >
+            <!-- Left Side: Icon & Text -->
+            <div class="trigger-content">
+              <span class="trigger-icon" id="trigger-icon" aria-hidden="true">
+                <!-- Default Placeholder Icon -->
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="10" cy="10" r="7"></circle>
+                  <line x1="10" y1="7" x2="10" y2="10"></line>
+                  <circle cx="10" cy="13" r="0.5" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span class="trigger-text is-placeholder" id="specialization-text">
+                Select an option
+              </span>
+            </div>
+
+            <!-- Right Side: Chevron -->
+            <span class="trigger-chevron" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 8 10 12 14 8"></polyline>
+              </svg>
+            </span>
+          </button>
+
+          <!-- Dropdown Menu / Options List -->
+          <div
+            id="specialization-options"
+            class="dropdown-menu"
+            role="listbox"
+            aria-labelledby="specialization-label"
+            tabindex="-1"
+          >
+            <ul class="options-list">
+              <!-- Option 1: Frontend Development -->
+              <li
+                class="dropdown-option"
+                role="option"
+                id="opt-frontend"
+                data-value="frontend"
+                aria-selected="false"
+              >
+                <div class="option-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <div class="option-content">
+                  <span class="option-title">Frontend Development</span>
+                  <span class="option-desc">React, Vue, Modern CSS &amp; Web APIs</span>
+                </div>
+                <span class="option-check" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 10 8 14 16 6"></polyline>
+                  </svg>
+                </span>
+              </li>
+
+              <!-- Option 2: Backend Development -->
+              <li
+                class="dropdown-option"
+                role="option"
+                id="opt-backend"
+                data-value="backend"
+                aria-selected="false"
+              >
+                <div class="option-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                  </svg>
+                </div>
+                <div class="option-content">
+                  <span class="option-title">Backend Development</span>
+                  <span class="option-desc">Node.js, Python, Databases &amp; Cloud</span>
+                </div>
+                <span class="option-check" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 10 8 14 16 6"></polyline>
+                  </svg>
+                </span>
+              </li>
+
+              <!-- Option 3: Full Stack Development -->
+              <li
+                class="dropdown-option"
+                role="option"
+                id="opt-fullstack"
+                data-value="fullstack"
+                aria-selected="false"
+              >
+                <div class="option-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <div class="option-content">
+                  <span class="option-title">Full Stack Development</span>
+                  <span class="option-desc">End-to-end architecture &amp; shipping</span>
+                </div>
+                <span class="option-check" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 10 8 14 16 6"></polyline>
+                  </svg>
+                </span>
+              </li>
+
+              <!-- Option 4: UI/UX Design -->
+              <li
+                class="dropdown-option"
+                role="option"
+                id="opt-uiux"
+                data-value="uiux"
+                aria-selected="false"
+              >
+                <div class="option-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    <path d="M2 2l7.586 7.586"></path>
+                    <circle cx="11" cy="11" r="2"></circle>
+                  </svg>
+                </div>
+                <div class="option-content">
+                  <span class="option-title">UI/UX Design</span>
+                  <span class="option-desc">User Research, Figma &amp; Design Systems</span>
+                </div>
+                <span class="option-check" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 10 8 14 16 6"></polyline>
+                  </svg>
+                </span>
+              </li>
+
+              <!-- Option 5: Data Science -->
+              <li
+                class="dropdown-option"
+                role="option"
+                id="opt-datascience"
+                data-value="datascience"
+                aria-selected="false"
+              >
+                <div class="option-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                </div>
+                <div class="option-content">
+                  <span class="option-title">Data Science</span>
+                  <span class="option-desc">Analytics, Modeling &amp; Big Data</span>
+                </div>
+                <span class="option-check" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 10 8 14 16 6"></polyline>
+                  </svg>
+                </span>
+              </li>
+
+              <!-- Option 6: Artificial Intelligence -->
+              <li
+                class="dropdown-option"
+                role="option"
+                id="opt-ai"
+                data-value="ai"
+                aria-selected="false"
+              >
+                <div class="option-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="option-content">
+                  <span class="option-title">Artificial Intelligence</span>
+                  <span class="option-desc">LLMs, Neural Networks &amp; ML Agents</span>
+                </div>
+                <span class="option-check" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 10 8 14 16 6"></polyline>
+                  </svg>
+                </span>
+              </li>
+            </ul>
+
+            <!-- Dropdown Menu Footer / Shortcut hints -->
+            <div class="menu-footer" aria-hidden="true">
+              <span class="shortcut-tip"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+              <span class="shortcut-tip"><kbd>↵</kbd> select</span>
+              <span class="shortcut-tip"><kbd>esc</kbd> close</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected Value Display / Status Area -->
+      <section class="status-section">
+        <!-- Live region for screen readers -->
+        <div id="status-live-region" class="sr-only" aria-live="polite"></div>
+
+        <!-- Success Message Banner -->
+        <div class="selection-banner is-empty" id="selection-banner">
+          <div class="banner-icon-container">
+            <!-- Emerald Success Check Circle -->
+            <svg class="banner-icon check-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 18a8 8 0 100-16 8 8 0 000 16z"></path>
+              <polyline points="7 10 9 12 13 8"></polyline>
+            </svg>
+            <!-- Info circle for idle state -->
+            <svg class="banner-icon idle-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="10" cy="10" r="8"></circle>
+              <line x1="10" y1="9" x2="10" y2="14"></line>
+              <line x1="10" y1="6" x2="10.01" y2="6"></line>
+            </svg>
+          </div>
+          
+          <div class="banner-content">
+            <span class="banner-heading" id="banner-text">No option selected</span>
+            <span class="banner-subtext" id="banner-subtext">Click above or use arrow keys to pick a specialization</span>
+          </div>
+
+          <!-- Clear / Reset Selection Button -->
+          <button
+            type="button"
+            class="clear-button"
+            id="clear-selection-btn"
+            title="Clear selection"
+            aria-label="Clear selection"
+            hidden
+          >
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="15" y1="5" x2="5" y2="15"></line>
+              <line x1="5" y1="5" x2="15" y2="15"></line>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Card Footer -->
+      <footer class="card-footer">
+        <div class="state-indicators">
+          <span class="status-pill status-ready" id="status-pill">
+            <span class="status-dot"></span>
+            <span id="state-label">Default State</span>
+          </span>
+        </div>
+        <span class="footer-hint">Press <kbd>Tab</kbd> to focus, <kbd>Space</kbd> to open</span>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

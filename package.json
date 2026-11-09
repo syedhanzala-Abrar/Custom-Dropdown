@@ -1,0 +1,19 @@
+{
+  "name": "stories-component",
+  "version": "1.0.0",
+  "description": "Interactive Stories Component with Segmented Progress Bar, 3-second Auto-advance, and Swipe Navigation based on wireframe specifications",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "stories",
+    "instagram-stories",
+    "wireframe",
+    "progress-bar",
+    "swipe-navigation",
+    "vanilla-js"
+  ],
+  "author": "",
+  "license": "MIT"
+}
